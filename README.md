@@ -30,7 +30,7 @@ Were used for this project:
 
 
 ```
-$  yarn add @react-navigation/native
+$  npm install @react-navigation/native
 
     '' Installing dependencies into an Expo managed project ''
 
@@ -38,7 +38,7 @@ $ npx expo install react-native-screens react-native-safe-area-context
 
     '' Installing the native stack navigator library ''
 
-$ yarn add @react-navigation/native-stack
+$ npm install @react-navigation/native-stack
 
 
 ```
@@ -61,7 +61,7 @@ Routes are lazily initialized -- their screen components are not mounted until t
 
 ```
 
-$ yarn add @react-navigation/bottom-tabs
+$ npm install @react-navigation/bottom-tabs
 
 ```
 ---
@@ -87,12 +87,12 @@ $ yarn add @react-navigation/bottom-tabs
 </h3>
 
 ```
-$ yarn add @sabroso/react-native-date-range-picker
+$ npm install @sabroso/react-native-date-range-picker
 
 ```
 
 [Know more - React modals](https://www.npmjs.com/package/react-native-modals)
 ```
-$ yarn add react-native-modals
+$ npm install react-native-modals
 
 ```
