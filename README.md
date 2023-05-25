@@ -81,7 +81,7 @@ $ npm install @react-navigation/bottom-tabs
 
 <h3>
 
-[Know more - React native date range](https://www.npmjs.com/package/@sabroso/react-native-date-range-picker)
+[Know more - React native date range]('https://www.npmjs.com/package/@sabroso/react-native-date-range-picker')
 
 
 </h3>
