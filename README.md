@@ -79,21 +79,20 @@ $ yarn add @react-navigation/bottom-tabs
 </h1>
 
 
-<h1 align="center"></h1>
+<h3>
+
+[Know more - React native date range](https://www.npmjs.com/package/@sabroso/react-native-date-range-picker)
+
+
+</h3>
 
 ```
-Parece que você está tentando usar o suporte da Web, mas não tem o necessário
-dependências instaladas.
-
-Please install react-native-web@~0.18.10, react-dom@18.2.0,
-@expo/webpack-config@^18.0.1 by running:
-
-$ npx expo install react-native-web@~0.18.10 react-dom@18.2.0
-@expo/webpack-config@^18.0.1
-
-If you're not using web, please ensure you remove the "web" string from the
-platforms array in the project Expo config.
+$ yarn add @sabroso/react-native-date-range-picker
 
 ```
 
-yarn add react-native-web
+[Know more - React modals](https://www.npmjs.com/package/react-native-modals)
+```
+$ yarn add react-native-modals
+
+```
