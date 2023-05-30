@@ -12,8 +12,9 @@ import HomeScreen from './screens/HomeScreen';
 import SavedScreen from './screens/SavedScreen';
 import BookingScreen from './screens/BookingScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import SearchScreen from './screens/SearchScreen';
 
-// Até aqui nos 21:00 tudo ok
+
 
 const StackNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -22,7 +23,6 @@ const StackNavigator = () => {
   function BottomTabs(){
     return (
         <Tab.Navigator>
-            {/* Home */}
             <Tab.Screen 
                 name="Home" 
                 component={ HomeScreen } 
@@ -31,14 +31,11 @@ const StackNavigator = () => {
                     headerShown: false, 
                     tabBarIcon:({focused}) => focused ? 
                     (<Entypo name="home" size={24} color="gold" />)
-                    // (<Entypo name="home" size={24} color="white" />)
                     :
                     (<AntDesign name="home" size={24} color="gold" />),
-                    // (<AntDesign name="home" size={24} color="white" />)
                 }}
             />
 
-            {/* Saved */}
             <Tab.Screen 
                 name="Saved" 
                 component={ SavedScreen } 
@@ -47,14 +44,11 @@ const StackNavigator = () => {
                     headerShown: false, 
                     tabBarIcon:({focused}) => focused ? 
                     (<AntDesign name="heart" size={24} color="gold" />)
-                    // (<AntDesign name="heart" size={24} color="white" />)
                     :
                     (<AntDesign name="hearto" size={24} color="gold" />),
-                    // (<AntDesign name="hearto" size={24} color="white" />),
                 }}
             />
 
-            {/* Bookings */}
             <Tab.Screen 
                 name="Bookings" 
                 component={ BookingScreen } 
@@ -63,14 +57,11 @@ const StackNavigator = () => {
                     headerShown: false, 
                     tabBarIcon:({focused}) => focused ? 
                     (<Ionicons name="notifications" size={24} color="gold" />)
-                    // (<Ionicons name="notifications" size={24} color="white" />)
                     :
                     (<Ionicons name="notifications-outline" size={24} color="gold" />),
-                    // (<Ionicons name="notifications-outline" size={24} color="white" />),
                 }}
             />
 
-            {/* Profile */}
             <Tab.Screen 
                 name="Profile" 
                 component={ ProfileScreen } 
@@ -79,10 +70,8 @@ const StackNavigator = () => {
                     headerShown: false, 
                     tabBarIcon:({focused}) => focused ? 
                     (<Ionicons name="person" size={24} color="gold" />)
-                    // (<Ionicons name="person" size={24} color="white" />)
                     :
                     (<Ionicons name="person-outline" size={24} color="gold" />),
-                    // (<Ionicons name="person-outline" size={24} color="white" />),
                 }}
             />
         </Tab.Navigator>
@@ -93,6 +82,7 @@ const StackNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Main" component={ BottomTabs } options={{ headerShown: false }} />
+        <Stack.Screen name="Search" component={ SearchScreen } options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -9,7 +9,7 @@ import {
   Image,
 } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import Header from "../components/Header";
@@ -23,36 +23,31 @@ import Modal, {
   SlideAnimation,
 } from "react-native-modals";
 
-// Até aqui tranquilo 30:22 funcionando bem
 
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [selectedDates, setSelectedDates] = useState();
+  const route = useRoute()
   const [rooms, setRooms] = useState(1);
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
   const [modalVisibile, setModalVisibile] = useState(false);
 
-  console.log(selectedDates);
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      // styling the header
       headerShown: true,
-      // title: "Ivan.com",
       title: "Booking.com",
       headerTitleStyle: {
         fontSize: 20,
         fontWeight: "bold",
         flexDirection: "row",
-        // color: "#00CED1",
         color: "gold",
         textAlign: "center",
         width: 320,
       },
       headerStyle: {
         backgroundColor: "#003579",
-        // backgroundColor: "#003580",
         height: 110,
         borderBottomColor: "transparent",
         shadowColor: "transparent",
@@ -82,6 +77,8 @@ const HomeScreen = () => {
     );
   };
 
+  console.log(route.params)
+
   return (
     <>
       <View>
@@ -90,7 +87,7 @@ const HomeScreen = () => {
         <ScrollView>
           <View
             style={{
-              margin: 20,
+              margin: 15,
               borderColor: "gold",
               borderWidth: 3,
               borderRadius: 6,
@@ -98,6 +95,7 @@ const HomeScreen = () => {
           >
             {/* Destination */}
             <Pressable
+            onPress={() => navigation.navigate("Search")}
               style={{
                 flexDirection: "row",
                 alignItems: "center",
@@ -110,10 +108,9 @@ const HomeScreen = () => {
             >
               <Feather name="search" size={24} color="black" />
               <TextInput
-                placeholderTextColor={"black"}
-                placeholder="Escolha seu Destino"
+                placeholderTextColor="black"
+                placeholder={route?.params ? route.params.input : "Escolha seu Destino"}
               />
-              {/* <TextInput placeholder='Enter your Destination' /> */}
             </Pressable>
 
             {/* Selected Dates */}
@@ -161,7 +158,7 @@ const HomeScreen = () => {
                   setSelectedDates(startDate, endDate)
                 }
                 allowFontScaling={false}
-                placeholder={"02 Mai , 2023  -> 30 Mai, 2023"}
+                placeholder={"Selecione sua data"}
                 mode={"range"}
               />
             </Pressable>
@@ -209,7 +206,6 @@ const HomeScreen = () => {
             </Pressable>
           </View>
 
-          {/* <Text>Viaje mais gaste menos</Text> */}
           <Text
             style={{ marginHorizontal: 20, fontSize: 16, fontWeight: "500" }}
           >
@@ -222,7 +218,6 @@ const HomeScreen = () => {
               style={{
                 width: 200,
                 height: 150,
-                // height: 250,
                 marginTop: 10,
                 borderRadius: 10,
                 padding: 20,
@@ -252,7 +247,6 @@ const HomeScreen = () => {
             <Pressable
               style={{
                 width: 200,
-                // height: 100,
                 height: 150,
                 marginTop: 10,
                 borderRadius: 10,
@@ -282,7 +276,6 @@ const HomeScreen = () => {
             <Pressable
               style={{
                 width: 200,
-                // height: 100,
                 height: 150,
                 marginTop: 10,
                 borderRadius: 10,
@@ -294,7 +287,6 @@ const HomeScreen = () => {
             >
               <Text
                 style={{
-                  // color: "gold",
                   fontSize: 15,
                   fontWeight: "bold",
                   marginVertical: 7,
@@ -319,11 +311,10 @@ const HomeScreen = () => {
             }}
           >
             <Image
-              style={{ width: 200, height: 50, resizeMode: "cover" }}
+              style={{ width: 100, height: 50, resizeMode: "cover" }}
               source={{
-                // uri: "https://i.imgur.com/xsJGftx.png",
-                uri: "https://imgur.com/xsJGftx",
-                // uri: "https://assets.stickpng.com/thumbs/5a32a821cb9a85480a628f8f.png",
+                // uri: "https://imgur.com/xsJGftx",
+                uri: "https://assets.stickpng.com/thumbs/5a32a821cb9a85480a628f8f.png",
               }}
             />
           </Pressable>
