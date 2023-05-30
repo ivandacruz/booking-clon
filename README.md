@@ -1,14 +1,13 @@
 <h1 align='center'>Booking-clone</h1>
 
-[Link - Youtube Video](https://www.youtube.com/watch?v=3QcMq90iD5Q)
 
 Were used for this project:
 
 <h3 align="center">
 
-[Know more - Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
+[Know more -Npm ](https://www.npmjs.com/)
 
-- For this application yarn was used as package manager or installer
+For this application npm was used as package manager or installer
 
 </h3>
 
@@ -28,17 +27,18 @@ Were used for this project:
 
 </h1>
 
+install:
 
 ```
-$  yarn add @react-navigation/native
+    $  npm install @react-navigation/native
 
     '' Installing dependencies into an Expo managed project ''
 
-$ npx expo install react-native-screens react-native-safe-area-context
+    $ npx expo install react-native-screens react-native-safe-area-context
 
     '' Installing the native stack navigator library ''
 
-$ yarn add @react-navigation/native-stack
+    $ npm install @react-navigation/native-stack
 
 
 ```
@@ -58,10 +58,11 @@ Routes are lazily initialized -- their screen components are not mounted until t
 
 </h3>
 
+install:
 
 ```
 
-$ yarn add @react-navigation/bottom-tabs
+    $ npm install @react-navigation/bottom-tabs
 
 ```
 ---
@@ -78,21 +79,36 @@ $ yarn add @react-navigation/bottom-tabs
 
 </h1>
 
+---
+<h1 align="center">
+React Native Date Range
+</h1>
 
 <h3>
 
 [Know more - React native date range](https://www.npmjs.com/package/@sabroso/react-native-date-range-picker)
+    
+ a library of expo icons.
 
 
 </h3>
 
-```
-$ yarn add @sabroso/react-native-date-range-picker
-
+install:
 ```
 
-[Know more - React modals](https://www.npmjs.com/package/react-native-modals)
+     $ npm install @sabroso/react-native-date-range-picker
+
 ```
-$ yarn add react-native-modals
+<h1 align="center">
+React Native Modal
+</h1>
+
+
+[Know more - React Native modals](https://www.npmjs.com/package/react-native-modals)
+
+install:
+```
+
+    $ npm install react-native-modals
 
 ```
