@@ -7,6 +7,7 @@ import {
   View,
   Button,
   Image,
+  Alert,
 } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -23,7 +24,6 @@ import Modal, {
   SlideAnimation,
 } from "react-native-modals";
 
-
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [selectedDates, setSelectedDates] = useState();
@@ -32,7 +32,6 @@ const HomeScreen = () => {
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
   const [modalVisibile, setModalVisibile] = useState(false);
-
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -77,7 +76,35 @@ const HomeScreen = () => {
     );
   };
 
-  console.log(route.params)
+  console.log(route.params);
+
+  const searchPlaces = (place) => {
+    if(!route.params || !selectedDates) {
+      Alert.alert(
+        "Invalid Details ", 
+        "Please enter all the details", 
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel"
+          },
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ],
+        {cancelable: false}
+      );
+    }
+
+    if(route.params && selectedDates){
+      navigation.navigate('Places',{
+        rooms:rooms,
+        adults:adults,
+        children:children,
+        selectedDates:selectedDates,
+        place:place
+      })
+    }
+  };
 
   return (
     <>
@@ -95,7 +122,7 @@ const HomeScreen = () => {
           >
             {/* Destination */}
             <Pressable
-            onPress={() => navigation.navigate("Search")}
+              onPress={() => navigation.navigate("Search")}
               style={{
                 flexDirection: "row",
                 alignItems: "center",
@@ -109,7 +136,9 @@ const HomeScreen = () => {
               <Feather name="search" size={24} color="black" />
               <TextInput
                 placeholderTextColor="black"
-                placeholder={route?.params ? route.params.input : "Escolha seu Destino"}
+                placeholder={
+                  route?.params ? route.params.input : "Escolha seu Destino"
+                }
               />
             </Pressable>
 
@@ -185,6 +214,7 @@ const HomeScreen = () => {
 
             {/* Search Button */}
             <Pressable
+              onPress={() => searchPlaces(route?.params.input)}
               style={{
                 paddingHorizontal: 10,
                 backgroundColor: "#2a52be",

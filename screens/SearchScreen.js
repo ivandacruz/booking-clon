@@ -467,47 +467,47 @@ const SearchScreen = () => {
         },
       ];
       
-      const filters = [
-        {
-          id: "0",
-          filter: "cost:Low to High",
-        },
-        {
-          id: "1",
-          filter: "cost:High to Low",
-        },
-      ];
+      // const filters = [
+      //   {
+      //     id: "0",
+      //     filter: "cost:Low to High",
+      //   },
+      //   {
+      //     id: "1",
+      //     filter: "cost:High to Low",
+      //   },
+      // ];
       
-      const services = [
-        {
-          id: "0",
-          name: "room service",
-        },
-        {
-          id: "2",
-          name: "free wifi",
-        },
-        {
-          id: "3",
-          name: "Family rooms",
-        },
-        {
-          id: "4",
-          name: "Free Parking",
-        },
-        {
-          id: "5",
-          name: "swimming pool",
-        },
-        {
-          id: "6",
-          name: "Restaurant",
-        },
-        {
-          id: "7",
-          name: "Fitness center",
-        },
-      ];
+      // const services = [
+      //   {
+      //     id: "0",
+      //     name: "room service",
+      //   },
+      //   {
+      //     id: "2",
+      //     name: "free wifi",
+      //   },
+      //   {
+      //     id: "3",
+      //     name: "Family rooms",
+      //   },
+      //   {
+      //     id: "4",
+      //     name: "Free Parking",
+      //   },
+      //   {
+      //     id: "5",
+      //     name: "swimming pool",
+      //   },
+      //   {
+      //     id: "6",
+      //     name: "Restaurant",
+      //   },
+      //   {
+      //     id: "7",
+      //     name: "Fitness center",
+      //   },
+      // ];
 
 
   return (

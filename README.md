@@ -99,6 +99,10 @@ install:
      $ npm install @sabroso/react-native-date-range-picker
 
 ```
+
+<br>
+
+
 <h1 align="center">
 React Native Modal
 </h1>
@@ -112,3 +116,48 @@ install:
     $ npm install react-native-modals
 
 ```
+
+<br>
+
+<h1>
+React Native - Alert
+</h1>
+
+[React native - Alert](https://reactnative.dev/docs/alert)
+
+Example:
+
+```
+
+import React from 'react';
+import {View, StyleSheet, Button, Alert} from 'react-native';
+
+const App = () => {
+  const createTwoButtonAlert = () =>
+    Alert.alert('Alert Title', 'My Alert Msg', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'OK', onPress: () => console.log('OK Pressed')},
+    ]);
+     return (
+    <View style={styles.container}>
+      <Button title={'2-Button Alert'} onPress={createTwoButtonAlert} />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+});
+
+export default App;
+
+```
+***
