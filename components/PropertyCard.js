@@ -21,7 +21,7 @@ const PropertyCard = ({
   const { width, height } = Dimensions.get("window");
   return (
     <View>
-      <Text>PropertyCard</Text>
+      {/* <Text>PropertyCard</Text> */}
       <Pressable
         style={{ margin: 15, flexDirection: "row", backgroundColor: "white" }}
       >
@@ -82,7 +82,51 @@ const PropertyCard = ({
               : property.address}
           </Text>
 
-          <Text>Price for 1 Night and {adults} adults</Text>
+          <Text style={{ margin: 4, fontSize: 15, fontWeight: "500" }}>
+            Price for 1 Night and {adults} adults
+          </Text>
+          <View
+            style={{
+              marginTop: 5,
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 8,
+            }}
+          >
+            <Text
+              style={{
+                color: "red",
+                fontSize: 18,
+                textDecorationLine: "line-through",
+              }}
+            >
+              {property.oldPrice * adults}
+            </Text>
+
+            <Text style={{ color: "green", fontSize: 18 }}>
+              R$ {property.newPrice * adults}
+            </Text>
+          </View>
+
+          <View>
+            <Text style={{ fontSize: 16, color: "gray" }}>Deluxe Room</Text>
+            <Text style={{ fontSize: 16, color: "gray" }}>
+              Hotel Room : 1 bed
+            </Text>
+          </View>
+
+          <View
+            style={{
+              backgroundColor: "#6082B6",
+              paddingVertical: 2,
+              paddingHorizontal:3,
+              borderRadius: 5,
+              marginTop:2,
+              width: 150,
+            }}
+          >
+            <Text style={{textAlign:"center",color:"white"}}>Limited Time deal</Text>
+          </View>
         </View>
       </Pressable>
     </View>

@@ -1,10 +1,17 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Pressable } from "react-native";
 import { Octicons, Ionicons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome5, Entypo, FontAwesome } from "@expo/vector-icons";
 import PropertyCard from "../components/PropertyCard";
+import {
+  BottomModal,
+  ModalContent,
+  ModalFooter,
+  ModalTitle,
+  SlideAnimation,
+} from "react-native-modals";
 
 const PlacesScreen = () => {
   const route = useRoute();
@@ -471,6 +478,8 @@ const PlacesScreen = () => {
   ];
 
   const navigation = useNavigation();
+  const [modalVisibile, setModalVisibile] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState([]);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -493,11 +502,33 @@ const PlacesScreen = () => {
       },
     });
   }, []);
+  const filters = [
+    {
+      id: "0",
+      filter: "cost:Low to High",
+    },
+    {
+      id: "1",
+      filter: "cost:High to Low",
+    },
+  ];
+  const searchPlaces = data?.filter(
+    (item) => item.place === route.params.place
+  );
+  console.log(searchPlaces);
+
+  const applyFilter = (filter) => {
+    setModalVisibile(false);
+    switch (filter) {
+      case "cost:High to low":
+        searchPlaces.map((val) => val.properties.sort(compare)) 
+    }
+  };
+
   console.log(route.params);
 
   return (
     <View>
-      {/* <Text>PlacesScreen</Text> */}
       <Pressable
         style={{
           flexDirection: "row",
@@ -508,8 +539,11 @@ const PlacesScreen = () => {
           backgroundColor: "white",
         }}
       >
-        <Pressable style={{ flexDirection: "row", alignItems: "center" }}>
-          <Octicons name="arrow-switch" size={24} color="grey" />
+        <Pressable
+          onPress={() => setModalVisibile(!modalVisibile)}
+          style={{ flexDirection: "row", alignItems: "center" }}
+        >
+          <Octicons name="arrow-switch" size={22} color="grey" />
           <Text style={{ fontSize: 15, fontWeight: "500", marginLeft: 8 }}>
             Sort
           </Text>
@@ -523,8 +557,7 @@ const PlacesScreen = () => {
         </Pressable>
 
         <Pressable style={{ flexDirection: "row", alignItems: "center" }}>
-          {/* <FontAwesome5 name="map-maker-alt" size={22} color="gray" /> */}
-          <FontAwesome5 name="map-marker-alt" size={24} color="gray" />
+          <FontAwesome5 name="map-marker-alt" size={22} color="gray" />
           <Text style={{ fontSize: 15, fontWeight: "500", marginLeft: 8 }}>
             Sort
           </Text>
@@ -548,6 +581,74 @@ const PlacesScreen = () => {
             ))
           )}
       </ScrollView>
+      <BottomModal
+        onBackdropPress={() => setModalVisibile(!modalVisibile)}
+        swipeDirection={["up", "down"]}
+        swipeThreshold={200}
+        footer={
+          <ModalFooter>
+            <Pressable
+              onPress={() => applyFilter(selectedFilter)}
+              style={{
+                paddingRight: 10,
+                marginLeft: "auto",
+                marginRight: "auto",
+                marginVertical: 10,
+                marginBottom: 30,
+              }}
+            >
+              <Text>Apply</Text>
+            </Pressable>
+          </ModalFooter>
+        }
+        modalTitle={<ModalTitle title="Sort and Filter" />}
+        modalAnimation={new SlideAnimation({ slideFrom: "bottom" })}
+        onHardwareBackPress={() => setModalVisibile(!modalVisibile)}
+        visible={modalVisibile}
+        onTouchOutside={() => setModalVisibile(!modalVisibile)}
+      >
+        <ModalContent style={{ width: "100%", height: 280 }}>
+          <View style={{ flexDirection: "row" }}>
+            <View
+              style={{
+                marginVertical: 10,
+                flex: 2,
+                height: 280,
+                borderRightWidth: 1,
+                borderColor: "#E0E0E0",
+              }}
+            >
+              <Text style={{ textAlign: "center" }}>Sort</Text>
+            </View>
+
+            <View style={{ flex: 3, margin: 10 }}>
+              {filters.map((item, index) => (
+                <Pressable
+                  onPress={() => setSelectedFilter(item.filter)}
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    marginVertical: 10,
+                  }}
+                  key={index}
+                >
+                  {selectedFilter.includes(item.filter) ? (
+                    <FontAwesome name="circle" size={20} color="green" />
+                  ) : (
+                    <Entypo name="circle" size={20} color="black" />
+                  )}
+
+                  <Text
+                    style={{ fontSize: 16, fontWeight: "500", marginLeft: 6 }}
+                  >
+                    {item.filter}
+                  </Text>
+                </Pressable>
+              ))}
+            </View>
+          </View>
+        </ModalContent>
+      </BottomModal>
     </View>
   );
 };

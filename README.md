@@ -160,4 +160,23 @@ const styles = StyleSheet.create({
 export default App;
 
 ```
+
+
+
+<h1></h1>
+
+
+<h1 align="center">
+
+ Acompanhamento
+
+até aqui: 02:22:59 tudo ok 
+
+</h1> 
+
+
+<br>
+
+[Sujan Anand - Booking.com](https://www.youtube.com/watch?v=3QcMq90iD5Q)
+
 ***
