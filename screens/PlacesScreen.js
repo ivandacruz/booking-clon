@@ -515,13 +515,42 @@ const PlacesScreen = () => {
   const searchPlaces = data?.filter(
     (item) => item.place === route.params.place
   );
+
+  const [sortedData,setSortedData] = useState(data);
+
   console.log(searchPlaces);
 
+  const compare = (a,b) => {
+    if(a.newPrice > b.newPrice){
+      return -1;
+    }
+    if(a.newPrice < b.newPrice){
+      return 1;
+    }
+    return 0;
+  }
+  
+  const comparision = (a,b) => {
+    if(a.newPrice < b.newPrice){
+      return -1;
+    }
+    if(a.newPrice > b.newPrice){
+      return 1;
+    }
+    return 0;
+  }
+
   const applyFilter = (filter) => {
-    setModalVisibile(false);
+    setModalVisibile(false)
     switch (filter) {
-      case "cost:High to low":
-        searchPlaces.map((val) => val.properties.sort(compare)) 
+      case "cost:High to Low":
+        searchPlaces.map((val) => val.properties.sort(compare));
+        setSortedData(searchPlaces); 
+        break;
+      case "cost:Low to High":
+        searchPlaces.map((val) => val.properties.sort(comparision));
+        setSortedData(searchPlaces);
+        break;
     }
   };
 
@@ -556,16 +585,18 @@ const PlacesScreen = () => {
           </Text>
         </Pressable>
 
-        <Pressable style={{ flexDirection: "row", alignItems: "center" }}>
+        <Pressable onPress={() => navigation.navigate("Map",{
+          searchResults:searchPlaces,
+        })} style={{ flexDirection: "row", alignItems: "center" }}>
           <FontAwesome5 name="map-marker-alt" size={22} color="gray" />
           <Text style={{ fontSize: 15, fontWeight: "500", marginLeft: 8 }}>
-            Sort
+            Map
           </Text>
         </Pressable>
       </Pressable>
 
       <ScrollView style={{ backgroundColor: "#F5F5F5" }}>
-        {data
+        {sortedData
           ?.filter((item) => item.place === route.params.place)
           .map((item) =>
             item.properties.map((property, index) => (
@@ -597,7 +628,7 @@ const PlacesScreen = () => {
                 marginBottom: 30,
               }}
             >
-              <Text>Apply</Text>
+              <Text style={{}}>Apply</Text>
             </Pressable>
           </ModalFooter>
         }
@@ -613,12 +644,15 @@ const PlacesScreen = () => {
               style={{
                 marginVertical: 10,
                 flex: 2,
-                height: 280,
+                height: 270,
+                // fontWeight: 400,
                 borderRightWidth: 1,
                 borderColor: "#E0E0E0",
               }}
             >
-              <Text style={{ textAlign: "center" }}>Sort</Text>
+              <Text style={{ textAlign: "center" }}>
+                Sort
+              </Text>
             </View>
 
             <View style={{ flex: 3, margin: 10 }}>
