@@ -63,7 +63,7 @@ const PropertyCard = ({
               marginTop: 7,
             }}
           >
-            <MaterialIcons name="stars" size={24} color="black" />
+            <MaterialIcons name="stars" size={24} color="green" />
             <Text>{property.rating}</Text>
             <View
               style={{
@@ -97,6 +97,7 @@ const PropertyCard = ({
           <Text style={{ margin: 4, fontSize: 15, fontWeight: "500" }}>
             Price for 1 Night and {adults} adults
           </Text>
+
           <View
             style={{
               marginTop: 5,
