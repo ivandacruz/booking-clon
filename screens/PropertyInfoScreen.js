@@ -42,7 +42,6 @@ const PropertyInfoScreen = () => {
 
   return (
     <>
-
       <SafeAreaView>
         <ScrollView>
           <Pressable
@@ -60,8 +59,17 @@ const PropertyInfoScreen = () => {
                 />
               </View>
             ))}
-            <Pressable style={{ alignItems: "center", justifyContent: "center" }}>
-              <Text style={{ textAlign: "center", marginLeft: 20 }}>
+            <Pressable
+              style={{ alignItems: "center", justifyContent: "center" }}
+            >
+              <Text
+                style={{
+                  textAlign: "center",
+                  marginLeft: 20,
+                  fontSize: 16,
+                  fontWeight: "bold",
+                }}
+              >
                 Show More
               </Text>
             </Pressable>
@@ -100,7 +108,11 @@ const PropertyInfoScreen = () => {
                   }}
                 >
                   <Text
-                    style={{ textAlign: "center", color: "white", fontSize: 15 }}
+                    style={{
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 15,
+                    }}
                   >
                     Genius Level
                   </Text>
@@ -199,7 +211,9 @@ const PropertyInfoScreen = () => {
           >
             {/* check in and check out */}
             <View>
-              <Text style={{ fontSize: 16, fontWeight: "600", marginBottom: 3 }}>
+              <Text
+                style={{ fontSize: 16, fontWeight: "600", marginBottom: 3 }}
+              >
                 Check In
               </Text>
               <Text
@@ -209,7 +223,9 @@ const PropertyInfoScreen = () => {
               </Text>
             </View>
             <View>
-              <Text style={{ fontSize: 16, fontWeight: "600", marginBottom: 3 }}>
+              <Text
+                style={{ fontSize: 16, fontWeight: "600", marginBottom: 3 }}
+              >
                 Check Out
               </Text>
               <Text
@@ -226,7 +242,9 @@ const PropertyInfoScreen = () => {
               Rooms and Guests
             </Text>
 
-            <Text style={{ fontSize: 14, fontWeight: "bold", color: "#007fff" }}>
+            <Text
+              style={{ fontSize: 14, fontWeight: "bold", color: "#007fff" }}
+            >
               {route.params.rooms} rooms {route.params.adults} adults{" "}
               {route.params.children} children
             </Text>
@@ -248,32 +266,45 @@ const PropertyInfoScreen = () => {
           {/* Separação */}
           <Text
             style={{
-              borderColor: "#E0E",
-              // borderColor: "#E0E0E0",
+              // borderColor: "#E0E",
+              borderColor: "#E0E0E0",
               borderWidth: 3,
               height: 1,
-              marginTop: 15,
+              marginTop: 60,
             }}
           />
         </ScrollView>
       </SafeAreaView>
 
+    {/* Esse botão nos envia para RoomsScreen */}
       <Pressable
-          style={{
-            marginTop: 10,
-            backgroundColor: "#6CB4EE",
-            position: "absolute",
-            bottom: 20,
-            padding: 15,
-            padding: 15,
-            alignItems:"center",
-            width: "95%",
-            marginHorizontal: 10,
-          }}
-        >
-          {/* Ate aqui tudo mais ou menos 3:14:28 */}
-          <Text>Select Availability</Text>
-        </Pressable>  
+      // um evento onPress
+      onPress={() => navigation.navigate("Rooms", {
+        rooms:route.params.availableRooms,
+        oldPrice:route.params.oldPrice,
+        newPrice:route.params.newPrice,
+        name:route.params.name,
+        children:route.params.children,
+        adults:route.params.adults,
+        rating:route.params.rating,
+        startDate:route.params.selectedDates.startDate,
+        endDate:route.params.selectedDates.endDate,
+      })}
+        style={{
+          backgroundColor: "#6CB4EE",
+          position: "absolute",
+          bottom: 18,
+          padding: 15,
+          width: "95%",
+          marginHorizontal: 10,
+          borderRadius: 18,
+        }}
+      >
+        {/* Ate aqui tudo mais ou menos 3:14:28 */}
+        <Text style={{ textAlign: "center", color: "white",fontSize: 17, fontWeight:"bold" }}>
+          Select Availability
+        </Text>
+      </Pressable>
     </>
   );
 };

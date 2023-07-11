@@ -53,7 +53,7 @@ const Amenities = () => {
               margin: 10,
               backgroundColor: "#007fff",
               paddingHorizontal: 10,
-              paddingVertical: 5,
+              paddingVertical: 10,
               borderRadius: 26,
             }}
             key={index}
